@@ -1,0 +1,100 @@
+#app {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 9% 83% 8%;
+}
+
+header, footer {
+  display: grid;
+  color: white;
+  padding: 1rem 2rem 1rem 2rem;
+}
+
+header {
+  grid-template-columns: auto 1fr auto;
+}
+
+header>h1, footer>h1 {
+  margin: 0;
+}
+
+header a {
+  color: var(--nice-white);
+}
+
+header>*, 
+footer>*, 
+footer a{
+  display: grid;
+  place-items: center;
+}
+
+header i::before{
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+#pfp {
+  border-radius: 50%;
+}
+
+footer {
+  grid-template-columns: auto auto;
+}
+
+footer .custom_icon{
+  height: 2em;
+  max-width: 40px;
+  fill: white;
+  cursor: pointer;
+}
+
+*::-webkit-scrollbar{
+    width: 5px;
+}
+
+*::-webkit-scrollbar-thumb{
+    background-color: #222222;
+    border-radius: 10px;
+}
+
+.route-enter,
+.route-enter-active,
+.route-enter-done,
+.route-exit,
+.route-exit-active,
+.route-exit-done,
+.route-appear,
+.route-appear-active,
+.route-appear-done {
+  position: relative;
+  transition: all 300ms ease;
+}
+
+.route-enter {
+  transform: translateY(30%);
+  opacity: 0;
+}
+
+.route-enter-active {
+  transform: translateY(0);
+  opacity: 100%;
+}
+
+.route-enter-done {
+  transform: translateY(0);
+  opacity: 100%;
+}
+
+.route-exit {
+  transform: translateY(0);
+  opacity: 100%;
+}
+
+.route-exit-active {
+  transform: translateY(30%);
+  opacity: 0;
+}

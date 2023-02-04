@@ -1,0 +1,242 @@
+@import url('./constants.css');
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+@keyframes expand-login-container {
+    0% {
+        height: 2rem;
+    }
+    100% {
+        height: 20em;
+    }
+}
+
+@keyframes unsquish {
+    from {
+        transform: scaleY(0%);
+    }
+    to {
+        transform: scaleY(100%);
+    }
+}
+
+@keyframes intro {
+    0% {
+        font-size: 35vw;
+        transform: translateY(0vh);
+    }
+    45% {
+        font-size: 35vw;
+        transform: translateY(0vh);
+    }
+    50% {
+        font-size: 30vw;
+        transform: translateY(0vh);
+    }
+    90% {
+        transform: translateY(0vh);
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
+}
+
+@keyframes intro-bot {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    45% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    90% {
+        transform: translateY(0vh);
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
+}
+
+@keyframes show-registration {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+* {
+    color: var(--nice-white);
+}
+
+.login,
+.login>div {
+    display: grid;
+    place-items: center;
+    gap: 20px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.login {
+    height: 100vh;
+}
+
+.login button,
+.login-container form input,
+.registration-form input,
+.registration-form button {
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 25px;
+    border: 2px var(--nice-white) solid;
+    border-radius: 999rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    transition: all 200ms ease;
+}
+
+.login button:hover,
+.registration-form button:hover {
+    color: #222222;
+    background-color: var(--nice-white);
+    padding: 0.5rem 2rem 0.5rem 2rem;
+}
+
+.login-container {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 30px;
+    border: 2px var(--nice-white) solid;
+    animation-name: expand-login-container;
+    animation-duration: .5s;
+    height: 20em;
+    width: 40vw;
+    display: grid;
+    place-items: center;
+}
+
+.login-container.error {
+    border-color: red;
+}
+
+span.error {
+    color: red;
+}
+
+.login-container form {
+    display: grid;
+    place-items: center;
+    gap: 1rem;
+    animation-name: unsquish;
+    animation-duration: .5s;
+}
+
+.login-container form input,
+.registration-form input {
+    cursor: auto;
+    transition: none;
+    border-radius: 10px;
+}
+
+.login-container-enter,
+.login-container-enter-active,
+.login-container-enter-done,
+.login-container-exit,
+.login-container-exit-active,
+.login-container-exit-done,
+.login-container-appear,
+.login-container-appear-active,
+.login-container-appear-done {
+    transition: all 500ms ease!important;
+}
+
+.login-container-exit {
+    color: var(--nice-white);
+    width: 8.7em;
+}
+
+.login-container-exit-active,
+.login-container-exit-active:hover {
+    color: transparent!important;
+    background-color: transparent!important;
+    width: 40rem;
+    padding: .5rem 1rem .5rem 1rem!important;
+}
+
+.login-container-enter {
+    color: transparent!important;
+}
+
+.login-container-enter-active {
+    color: var(--nice-white)!important;
+}
+
+.register-container {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+h1.intro, span.intro, div.intro {
+    font-size: 30vw;
+    font-family: 'Concert One', cursive;
+    /* height: 40vh; */
+    animation-name: intro;
+    animation-duration: 5s;
+    transform: translateY(-100vh);
+    transition: all 500ms ease;
+}
+
+h3.intro-bot{
+    animation-name: intro-bot;
+    animation-duration: 5s;
+    transform: translateY(-100vh);
+    transition: all 500ms ease;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.registration-form {
+    animation: show-registration 500ms ease;
+    gap: 2rem;
+    height: auto;
+    padding: 3rem 0;
+}
+
+.center-grid {
+    display: grid;
+    place-items: center;
+}
+
+@media (orientation: portrait) {
+    .login-container,
+    .login-container-exit-active,
+    .login-container-exit-active:hover {
+        width: 70vw;
+    }
+    .login-container form input, .registration-form input {
+        width: 50vw;
+    }
+    span.intro{
+        transform: none;
+        font-size: 30vw;
+        display: inline-block;
+    }
+    span.intro:nth-child(1){ animation: intro-span-1 2.5s ease;}
+    span.intro:nth-child(2){ animation: intro-span-2 2.5s ease;}
+    span.intro:nth-child(3){ animation: intro-span-3 2.5s ease;}
+    span.intro:nth-child(4){ animation: intro-span-4 2.5s ease;}
+    span.intro:nth-child(5){ animation: intro-span-5 2.5s ease;}
+    @keyframes intro-span-1 {0% {transform: scale(233%) translate(2vw, -15vh) rotate(-15deg);} 90%{transform: scale(233%) translate(2vw, -15vh) rotate(-15deg);} 100% {font-size: 30vw; transform: none;}}
+    @keyframes intro-span-2 {0% {transform: scale(233%) translate(14vw, -10vh) rotate(10deg);} 90%{transform: scale(233%) translate(14vw, -10vh) rotate(10deg);} 100% {font-size: 30vw; transform: none;}}
+    @keyframes intro-span-3 {0% {transform: scale(233%) translate(-13vw, -1vh) rotate(-23deg);} 90%{transform: scale(233%) translate(-13vw, -1vh) rotate(-23deg);} 100% {font-size: 30vw; transform: none;}}
+    @keyframes intro-span-4 {0% {transform: scale(233%) translate(2vw, 6vh) rotate(13deg);} 90%{transform: scale(233%) translate(2vw, 6vh) rotate(13deg);} 100% {font-size: 30vw; transform: none;}}
+    @keyframes intro-span-5 {0% {transform: scale(233%) translate(-25vw, 15vh) rotate(8deg);} 90%{transform: scale(233%) translate(-25vw, 15vh) rotate(8deg);} 100% {font-size: 30vw; transform: none;}}
+}
