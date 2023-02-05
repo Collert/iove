@@ -27,9 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000", "http://192.168.56.68:3000"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000", "http://172.27.144.1:3000", "https://2df6-2001-569-7c3d-9100-1413-20bb-b695-b95.ngrok.io"]
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000", "http://192.168.56.68:3000"]
+CORS_ALLOW_ALL_ORIGINS = True
+
+# CORS_ALLOWED_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000", "http://172.27.144.1:3000", "https://2df6-2001-569-7c3d-9100-1413-20bb-b695-b95.ngrok.io"]
 
 CORS_ALLOW_CREDENTIALS = True
 

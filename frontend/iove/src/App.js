@@ -59,13 +59,12 @@ function App() {
     <div id='app'>
       <Routes location={location} key={location.pathname}>
         <Route path='/login' element={<Login viewport={viewportInfo} setLoggedIn={setLoggedIn}/>}/>
-        {/* <Route path='/register'/> */}
       </Routes>
       {(location.pathname !== '/login' && location.pathname !== '/register') && <Header/>}
       <SwitchTransition>
         <CSSTransition key={location.key} classNames='route' timeout={300}>
           <Routes location={location} key={location.pathname}>
-            <Route path='/register' element={<Register viewport={viewportInfo}/>}/>
+            <Route path='/register' element={<Register setLoggedIn={setLoggedIn} viewport={viewportInfo}/>}/>
             <Route path='/' element={
               loggedIn ? 
               <Swipe viewport={viewportInfo}/> 

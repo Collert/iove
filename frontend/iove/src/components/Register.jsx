@@ -5,6 +5,7 @@ export default function Register (props) {
 
     const navigate = useNavigate()
 
+    const setLoggedIn = props.setLoggedIn;
     const {state} = useLocation()
     console.log(state)
     const [showIntro, setShowIntro] = React.useState(true)
@@ -34,9 +35,11 @@ export default function Register (props) {
         } else {
             return response.json()
         }
-        }).then(() => (
+        }).then(() => {
+            sessionStorage.setItem('loggedIn', 'true')
+            setLoggedIn(true)
             navigate('/profile')
-        )).catch(error => {
+        }).catch(error => {
             setErrorMsg(error.message)
         })
     }

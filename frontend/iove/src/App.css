@@ -98,3 +98,7 @@ footer .custom_icon{
   transform: translateY(30%);
   opacity: 0;
 }
+
+h1 {
+  text-align: center;
+}

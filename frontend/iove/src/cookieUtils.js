@@ -1,6 +1,6 @@
 export function getCookie(name) {
     let cookieValue = null;
-    // console.log(document.cookie)
+    console.log(document.cookie)
     if (document.cookie && document.cookie !== '') {
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
@@ -12,11 +12,12 @@ export function getCookie(name) {
             }
         }
     }
-    // console.log(cookieValue)
+    console.log(cookieValue)
     return cookieValue;
 }
 
 export function generatePayload(csrftoken, body=undefined, method='GET') {
+    console.log(csrftoken)
     return {
         credentials: 'include',
         method: method,
