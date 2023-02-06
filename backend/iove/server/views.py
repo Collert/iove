@@ -96,3 +96,6 @@ def get_basic_info(request):
 def wsTest(request):
     # print(request.user.jsonify())
     return render(request, 'server/wsTest.html')
+
+def index(request):
+    return render(request, "index.html")
