@@ -19,9 +19,9 @@ export function getCookie(name) {
 export function generatePayload(csrftoken, body=undefined, method='GET') {
     console.log(csrftoken)
     return {
-        credentials: 'include',
+        // credentials: 'include',
         method: method,
-        mode: 'cors',
+        // mode: 'cors',
         headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',

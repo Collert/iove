@@ -26,9 +26,9 @@ SECRET_KEY = 'django-insecure-!0@v$9j_*jh!+az)t4+g_+tjww*k22y1e%2dgixw=7_qup!(cd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['9914-2001-569-7c3d-9100-2d32-97b5-1d4e-e9af.ngrok.io', "127.0.0.1"]
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000", "http://172.27.144.1:3000", "https://2df6-2001-569-7c3d-9100-1413-20bb-b695-b95.ngrok.io"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000", "http://172.27.144.1:3000", "http://9914-2001-569-7c3d-9100-2d32-97b5-1d4e-e9af.ngrok.io"]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -152,7 +152,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/build/static')
+    # os.path.join(BASE_DIR, 'frontend/build/'),
+    os.path.join(BASE_DIR, 'frontend/build/static'),
 ]
 
 # Default primary key field type
@@ -163,9 +164,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/login'
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.IsAuthenticated'
-    # ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ],
     'DEFAULT_AUTHENTICATION_CLASSES':[
         'rest_framework.authentication.SessionAuthentication'
     ]

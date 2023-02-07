@@ -49,32 +49,32 @@ export default function LittleCard (props) {
     } else if (props.theme === 'game') {
         card = (<div onClick={editing? expandCard : undefined} className={`little-card card ${cardActive ? 'maximized' : ''} ${editing? 'editing' : ''} game`}>
                     {props.specifics ? 
-                    <img src={`./assets/game_covers/${props.specifics}.jpg`} alt='favorite game'/>
+                    <img src={`static/assets/game_covers/${props.specifics}.jpg`} alt='favorite game'/>
                     : handleUndefined}
                 </div>)
     } else if (props.theme === 'paradigm') {
         card = (<div onClick={editing? expandCard : undefined} className={`little-card card ${cardActive ? 'maximized' : ''} ${editing? 'editing' : ''} paradigm`}>
                     {props.specifics ? 
-                    <img src={`./assets/game_covers/${props.specifics}.jpg`} alt='favorite game'/>
+                    <img src={`static/assets/game_covers/${props.specifics}.jpg`} alt='favorite game'/>
                     : handleUndefined}
                 </div>)
     } else if (props.theme === 'zodiac') {
         card = (<div onClick={editing? expandCard : undefined} className={`little-card card ${cardActive ? 'maximized' : ''} ${editing? 'editing' : ''} zodiac`}>
                     {props.specifics ? 
-                    <img src={`./assets/zodiac/${props.specifics}.gif`} alt='zodiac sign'/>
+                    <img src={`static/assets/zodiac/${props.specifics}.gif`} alt='zodiac sign'/>
                     : handleUndefined}
                 </div>)
     } else if (props.theme === 'looking_for') {
         card = (<div onClick={editing? expandCard : undefined} className={`little-card card ${cardActive ? 'maximized' : ''} ${editing? 'editing' : ''} looking_for`}>
                     {props.specifics ? 
-                    <img src={`./assets/looking_for/${props.specifics}.jpg`} alt='what person is looking for'/>
+                    <img src={`static/assets/looking_for/${props.specifics}.jpg`} alt='what person is looking for'/>
                     : handleUndefined}
                 </div>)
     } else if (props.theme === null && props.specifics === 'load') {
         card = (<div className="little-card card"><div className="loading"></div></div>)
     } else {
         card = (<div onClick={editing? expandCard : undefined} className={`little-card card ${cardActive ? 'maximized' : ''} ${editing? 'editing' : ''} looking_for`}>
-                    <h1>Customize card</h1>
+                    <h1>Make me pretty</h1>
                 </div>)
     }
 

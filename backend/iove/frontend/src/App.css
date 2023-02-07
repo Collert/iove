@@ -20,6 +20,7 @@ header>h1, footer>h1 {
 
 header a {
   color: var(--nice-white);
+  text-decoration: none;
 }
 
 header>*, 

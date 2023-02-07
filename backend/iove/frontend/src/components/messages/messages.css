@@ -140,7 +140,7 @@
 
 .chat_box {
     /* background-color: #222222; */
-    /* width: 90%; */
+    width: 90%;
     border-radius: 10px;
     display: grid;
     grid-template-rows: 1fr 10%;
@@ -195,7 +195,7 @@
 .chat_window {
     overflow-y: scroll;
     display: flex;
-    padding-right: 0.3rem;
+    padding: 0 0.3rem 0 calc(0.3rem + 5px);
     flex-direction: column-reverse;
 }
 
@@ -263,4 +263,16 @@
 .openers>div:hover {
     background-color: var(--nice-white);
     color: #222222;
+}
+
+@media (orientation: portrait) {
+    .openers {
+        flex-direction: column;
+        width: 100%;
+        gap: inherit;
+        align-items: center;
+    }
+    .openers>div {
+        width: 70vw;
+    }
 }

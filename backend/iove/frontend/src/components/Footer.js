@@ -67,6 +67,7 @@ export default function Footer (props) {
                 to='/'
                 onMouseEnter={(location.pathname !== '/') ? (() =>{setSwipeIconFill(true)}) : undefined} 
                 onMouseLeave={(location.pathname !== '/') ? (() =>{setSwipeIconFill(false)}) : undefined}
+                onClick={props.hideArrow}
                 >
                     {swipeIconFill ? swipeIconFilled: swipeIcon}
                 </Link>
@@ -75,7 +76,9 @@ export default function Footer (props) {
                 <Link 
                 onMouseEnter={(location.pathname !== '/messages') ? (() =>{setChatIconFilled(true)}) : undefined} 
                 onMouseLeave={(location.pathname !== '/messages') ? (() =>{setChatIconFilled(false)}) : undefined}
-                to='/messages'>
+                to='/messages'
+                onClick={props.hideArrow}
+                >
                     {chatIconFilled ? filledChatIcon : hollowChatIcon}
                 </Link>
             </div>

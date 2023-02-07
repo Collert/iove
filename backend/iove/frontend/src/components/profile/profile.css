@@ -273,13 +273,32 @@ input[type="range"]::-webkit-slider-thumb{
     background-color: var(--nice-white);
 } */
 
+@keyframes instruction-gone {from {opacity: 1;} 90% {opacity: 1;} to {opacity: 0;}}
+
+.instruction {
+    position: absolute;
+    top: 10vh;
+    opacity: 0;
+    z-index: 2;
+    background: #2b2b2b;
+    border-radius: 100vh;
+    padding: 1rem;
+    animation: instruction-gone 4.5s ease;
+}
+.no-matches{
+    height: 100%;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
 @media (orientation: portrait) {
     .expanded-edit {
-        grid-template-rows: 1fr 1fr;
+        box-sizing: border-box;
         grid-template-columns: none;
+        grid-template-rows: 50vh 49vh;
         height: 100vh;
         overflow-y: scroll;
-        box-sizing: border-box;
     }
 
     .editor{
@@ -309,5 +328,13 @@ input[type="range"]::-webkit-slider-thumb{
         display: grid;
         place-items: center;
         gap: 0.5rem;
+    }
+    .card.maximized.little-card,
+    .card.little-card.editing.editor-container-exit-active,
+    .card.little-card.editing.editor-container-exit-active,
+    .card.little-card.editing.editor-container-enter:not(.editor-container-enter-active),
+    .card.editing.editor-container-exit-active,
+    .card.editing.editor-container-enter:not(.editor-container-enter-active) {
+        transform: translateY(-13vh)!important;
     }
 }

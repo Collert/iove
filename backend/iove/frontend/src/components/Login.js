@@ -63,7 +63,7 @@ export default function Login(props) {
 
     function captureLoginForm (e) {
         e.preventDefault()
-        fetch("http://localhost:8000/api/login", 
+        fetch("/api/login", 
             generatePayload(getCookie('csrftoken'), JSON.stringify(loginFormData), 'POST')
         ).then(response => {
             if (!response.ok){

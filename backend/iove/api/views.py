@@ -29,6 +29,7 @@ class GetCookie(APIView):
 #     return Response({"data":"CSRFCookie set"})
 
 @method_decorator(csrf_protect, name='dispatch')
+@method_decorator(login_required, name='dispatch')
 class GetBasicInfo(APIView):
     def get(self, request):
         if request.user:
@@ -54,32 +55,23 @@ class Register(APIView):
         
         print(request.data)
         data = json.loads(request.data)
+        print(data)
         # Attempt to create new user
         try:
             user = User.objects.create_user(# type: ignore
                 username = data["username"], 
                 email = data["email"], 
                 password = data["password"],
-                age = data["age"]
+                age = data["age"],
+                first_name=data["firstName"],
+                last_name=data["lastName"]
             )
             user.save()
+            print(user)
+            login(request, user)
+            return Response({"response":"Registration successful"}, status=200)
         except IntegrityError:
             return Response({"response":"Username taken"}, status=403)
-        login(request, user)
-        return Response({"response":"Registration successful"}, status=200)
-        # username = data["username"]
-        # password = data["password"]
-        # print(data)
-        # user = authenticate(request, username=username, password=password)
-        # print(user)
-
-        # # Check if authentication successful
-        # if user is not None:
-        #     login(request, user)
-        #     return Response({"response":"Logged in"}, status=200)
-        # else:
-        #     return Response({"response":"Invalid credentials"}, status=401)
-        # data = json.loads(request.body)
 
 
 class Profile(APIView):
@@ -163,6 +155,7 @@ class LoginView(APIView):
         username = data["username"]
         password = data["password"]
         user = authenticate(request, username=username, password=password)
+        print(user)
 
         # Check if authentication successful
         if user is not None:
@@ -177,14 +170,15 @@ class SubmitDecision(APIView):
         subject = User.objects.get(pk=data["subject"])
         user = request.user
         print(user.id)
-        if data["like"]:
-            user.likes.add(subject)
-            if subject.likes.filter(pk=user.id).exists():
-                user.matches.add(subject)
-                subject.matches.add(user)
-                Chat.objects.create(participant_1_id = user.id, participant_2_id = subject.id)# type: ignore
-                # subject.save()
-        else:
+        try:
+            if data["like"]:
+                user.likes.add(subject)
+                if subject.likes.filter(pk=user.id).exists():
+                    user.matches.add(subject)
+                    subject.matches.add(user)
+                    Chat.objects.create(participant_1_id = user.id, participant_2_id = subject.id)# type: ignore
+                    # subject.save()
+        except KeyError:
             user.dislikes.add(subject)
         # user.save()
 

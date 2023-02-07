@@ -3,7 +3,7 @@ import { generatePayload, getCookie } from "../../cookieUtils";
 import ChatContainer from "./ChatContainer";
 import MatchesContainer from "./MatchesContainer";
 import './messages.css'
-// import testData from "./testData";
+import testData from "./testData";
 import loadingData from "./loadingData";
 
 export default function Messages(props) {
@@ -21,7 +21,7 @@ export default function Messages(props) {
     }
     
     const [selectedChat, setSelectedChat] = React.useState(undefined)
-    const [messages, setMessages] = React.useState(loadingData)
+    const [messages, setMessages] = React.useState(testData)
     const [lastMessages, setLastMessages] = React.useState(() => (filterLastMessages(messages)))
     const [selectedMatch, setSelectedMatch] = React.useState()
     const [loading, setLoading] = React.useState(true)
@@ -32,7 +32,7 @@ export default function Messages(props) {
 
     React.useEffect(() => {
         props.setShowChat(false)
-        fetch('http://localhost:8000/api/chats', generatePayload(getCookie('csrftoken')))
+        fetch('/api/chats', generatePayload(getCookie('csrftoken')))
         .then(response => response.json())
         .then(data => {
             setMessages(data)
@@ -49,8 +49,6 @@ export default function Messages(props) {
         setSelectedChat(id)
         props.setShowChat(true)
     }
-
-    console.log(props.showChat)
 
     return (
         props.viewport.portrait ?

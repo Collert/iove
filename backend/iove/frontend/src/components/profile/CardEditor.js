@@ -21,7 +21,7 @@ export default function CardEditor(props) {
             }
         }
         console.log('submitted')
-        fetch('http://localhost:8000/api/profile',
+        fetch('/api/profile',
             generatePayload(getCookie('csrftoken'), user, 'POST')
         ).then(response => response.json())
         // .then(newUser => console.log(newUser))
@@ -192,7 +192,7 @@ export default function CardEditor(props) {
                     <div className="dropdown">
                         <label htmlFor="themeSelector">Card theme:</label>
                         <select value={cardProps.theme} onChange={updateLocalUser} name="themeSelector" id="themeSelector">
-                            <option value={''} disabled hidden>SELECT THEME</option>
+                            <option value={undefined} selected={cardProps.theme === null} disabled hidden>SELECT THEME</option>
                             <option value={'music'}>Favorite music genre</option>
                             <option value={'game'}>Favorite video game</option>
                             <option value={'paradigm'} disabled>Your programming paradigm</option>
@@ -249,12 +249,6 @@ export default function CardEditor(props) {
                             <label className="toggle-button"><input name="ethnicity" checked={selectedEth.includes('Southeast Asian')} value='Southeast Asian' onChange={updateLocalUser} type='checkbox'/>Southeast Asian</label>
                             <label className="toggle-button"><input name="ethnicity" checked={selectedEth.includes('Middle Eastern')} value='Middle Eastern' onChange={updateLocalUser} type='checkbox'/>Middle Eastern</label>
                             <label className="toggle-button"><input name="ethnicity" checked={selectedEth.includes('Latin American')} value='Latin American' onChange={updateLocalUser} type='checkbox'/>Latin American</label>
-                            {/* <label className="toggle-button"><input type='checkbox'/>Baloon</label>
-                            <label className="toggle-button"><input type='checkbox'/>Different</label>
-                            <label className="toggle-button"><input type='checkbox'/>Nascar</label>
-                            <label className="toggle-button"><input type='checkbox'/>Racist</label>
-                            <label className="toggle-button"><input type='checkbox'/>Chilean</label>
-                            <label className="toggle-button"><input type='checkbox'/>Ohio</label> */}
                         </div>
                         <h2>Languages spoken:</h2>
                         <div className="languages">
@@ -325,8 +319,8 @@ export default function CardEditor(props) {
             <>
             <h2>Favorite hobby:</h2>
             <div className="dropdown">
-                <select value={cardProps.hobby} onChange={updateLocalUser} name="favoriteHobby" id="hobbySelector">
-                    <option hidden disabled value={''}></option>
+                <select value={cardProps.hobby === null ? undefined : cardProps.hobby} onChange={updateLocalUser} name="favoriteHobby" id="hobbySelector">
+                    <option hidden disabled value={undefined}></option>
                     <option value={'winter_sports'}>Winter Sports</option>
                     <option value={'gaming'}>Gaming</option>
                 </select>

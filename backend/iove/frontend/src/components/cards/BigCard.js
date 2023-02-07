@@ -37,7 +37,7 @@ export default function BigCard (props) {
 
     if (props.purpose === 'title') {
         const transformations = {
-            transform:`translateX(${props.profilePic.transformX}px) translateY(${props.profilePic.transformY}px) scale(${props.profilePic.transformScale}%)`
+            transform:`translateX(${props.profilePic.transformX !== undefined ? props.profilePic.transformX : 0}px) translateY(${props.profilePic.transformY !== undefined ? props.profilePic.transformY : 0}px) scale(${props.profilePic.transformScale !== undefined ? props.profilePic.transformScale : 0}%)`
         }
         card = (<div onClick={expandCard} className={`big-card card pfp ${cardActive ? 'maximized' : ''} ${editing? 'editing' : ''}`}>
                     {props.profilePic.image === 'load' ?
@@ -101,17 +101,17 @@ export default function BigCard (props) {
                                 <h5>
                                     I do
                                 </h5>
-                                {(lifestyle.smoke !== undefined && lifestyle.smoke) && (<img src="./assets/smoking.png" alt="Smoking icon"/>)}
-                                {(lifestyle.weed !== undefined && lifestyle.weed) && (<img src="./assets/weed.png" alt="Cannabis icon"/>)}
-                                {(lifestyle.alcohol !== undefined && lifestyle.alcohol) && (<img src="./assets/alcohol.png" alt="Alcohol icon"/>)}
+                                {(lifestyle.smoke !== undefined && lifestyle.smoke) && (<img src="static/assets/smoking.png" alt="Smoking icon"/>)}
+                                {(lifestyle.weed !== undefined && lifestyle.weed) && (<img src="static/assets/weed.png" alt="Cannabis icon"/>)}
+                                {(lifestyle.alcohol !== undefined && lifestyle.alcohol) && (<img src="static/assets/alcohol.png" alt="Alcohol icon"/>)}
                             </div>
                             <div>
                                 <h5>
                                     I don't do
                                 </h5>
-                                {(lifestyle.smoke !== undefined && !lifestyle.smoke) && (<img src="./assets/smoking.png" alt="Smoking icon"/>)}
-                                {(lifestyle.weed !== undefined && !lifestyle.weed) && (<img src="./assets/weed.png" alt="Cannabis icon"/>)}
-                                {(lifestyle.alcohol !== undefined && !lifestyle.alcohol) && (<img src="./assets/alcohol.png" alt="Alcohol icon"/>)}
+                                {(lifestyle.smoke !== undefined && !lifestyle.smoke) && (<img src="static/assets/smoking.png" alt="Smoking icon"/>)}
+                                {(lifestyle.weed !== undefined && !lifestyle.weed) && (<img src="static/assets/weed.png" alt="Cannabis icon"/>)}
+                                {(lifestyle.alcohol !== undefined && !lifestyle.alcohol) && (<img src="static/assets/alcohol.png" alt="Alcohol icon"/>)}
                             </div>
                         </div>)}
                         {lifestyle.diet && (
@@ -140,7 +140,7 @@ export default function BigCard (props) {
         card = (<div onClick={expandCard} className={`big-card card hobby ${cardActive ? 'maximized' : ''} ${editing? 'editing' : ''}`}>
                     {props.hobby === 'load' ? 
                         <div className="loading"></div> :
-                        <><img src={`assets/hobbies/${props.hobby}.gif`} alt='Favorite hobby'/>
+                        <><img src={`static/assets/hobbies/${props.hobby}.gif`} alt='Favorite hobby'/>
                     <div className="gradient"></div>
                     <div className="text">
                         <h1>Favorite hobby</h1>

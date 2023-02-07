@@ -29,22 +29,26 @@ function App() {
   )
   const [showChat, setShowChat] = React.useState(false)
   
+  function hideArrow() {
+    setShowChat(false)
+  }
+  
   React.useEffect(() => {
-    fetch('http://localhost:8000/api/',
+    fetch('/api/',
     {
-      credentials: 'include',
-        method: 'GET',
-        mode: 'cors',
-        headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        },
+      // credentials: 'include',
+      method: 'GET',
+      // mode: 'cors',
+      headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      },
     })
   },[])
 
   React.useEffect(()=>{
     if (loggedIn) {
-      fetch('http://localhost:8000/api/basic-info', generatePayload(getCookie('csrfcookie'))).then(response => {
+      fetch('/api/basic-info', generatePayload(getCookie('csrfcookie'))).then(response => {
         return response.json()
       }).then(info => {
         sessionStorage.setItem("basicUserInfo", JSON.stringify(info))
@@ -60,7 +64,7 @@ function App() {
       <Routes location={location} key={location.pathname}>
         <Route path='/login' element={<Login viewport={viewportInfo} setLoggedIn={setLoggedIn}/>}/>
       </Routes>
-      {(location.pathname !== '/login' && location.pathname !== '/register') && <Header/>}
+      {(location.pathname !== '/login' && location.pathname !== '/register') && <Header hideArrow={hideArrow} inChat={showChat}/>}
       <SwitchTransition>
         <CSSTransition key={location.key} classNames='route' timeout={300}>
           <Routes location={location} key={location.pathname}>
@@ -94,7 +98,7 @@ function App() {
         </CSSTransition>
         </SwitchTransition>
       {/* <Swipe/> */}
-      {(location.pathname !== '/login' && location.pathname !== '/register') && <Footer/>}
+      {(location.pathname !== '/login' && location.pathname !== '/register') && <Footer hideArrow={hideArrow}/>}
     </div>
   );
 

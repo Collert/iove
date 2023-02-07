@@ -28,7 +28,7 @@ export default function Swipe (props) {
 
     async function fetchUsers (qty) {
         try {
-            const response = await fetch(`http://localhost:8000/api/serve?n=${qty}`, generatePayload(getCookie('csrftoken')))
+            const response = await fetch(`/api/serve?n=${qty}`, generatePayload(getCookie('csrftoken')))
             checkFetchErrors(response)
             const data = await response.json()
             // console.log(data)
@@ -63,7 +63,7 @@ export default function Swipe (props) {
     React.useEffect(() => {
         if (index !== 0 && index>=stacksToFetch) {
             setCurrentStack(stacksCollection[index])
-            fetch(`http://localhost:8000/api/serve?n=${stacksToFetch}`, generatePayload(getCookie('csrftoken')))
+            fetch(`/api/serve?n=${stacksToFetch}`, generatePayload(getCookie('csrftoken')))
             .then(response => response.json())
             .then(data => {
                 setIndex(0)

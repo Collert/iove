@@ -26,7 +26,7 @@ export default function Register (props) {
 
     function submitRegister(e) {
         e.preventDefault()
-        fetch("http://localhost:8000/api/register", generatePayload(getCookie('csrftoken'), JSON.stringify(formData), 'POST'))
+        fetch("/api/register", generatePayload(getCookie('csrftoken'), JSON.stringify(formData), 'POST'))
         .then(response => {
         if (!response.ok){
             if (response.status === 403) {

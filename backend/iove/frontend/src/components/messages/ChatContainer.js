@@ -12,7 +12,9 @@ export default function ChatContainer (props) {
     const [socketUrl, setSocketUrl] = React.useState();
 
     React.useEffect(() => {
-        setSocketUrl(`ws://localhost:8000/ws/chat/${props.conversationId}`)
+        if (props.conversationId) {
+            setSocketUrl(`ws://localhost:8000/ws/chat/${props.conversationId}`)
+        }
     },[props.conversationId])
   
     const { sendMessage, lastMessage, readyState, lastJsonMessage } = useWebSocket(socketUrl);
@@ -53,7 +55,7 @@ export default function ChatContainer (props) {
                 text:msg,
                 conversation:props.conversationId
             }
-            fetch('http://localhost:8000/api/send_message',generatePayload(getCookie('csrftoken'), JSON.stringify(body), 'POST'))
+            fetch('/api/send_message',generatePayload(getCookie('csrftoken'), JSON.stringify(body), 'POST'))
         }
     },[props.conversationId, props.everyMsg])
     

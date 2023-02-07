@@ -462,7 +462,9 @@ pre {
 .handleUndefined {
     text-align: center;
 }
-
+.little-card.card {
+    overflow-wrap: break-word;
+}
 @media (orientation: portrait) {
     .card.pfp span {
         font-size: medium;
@@ -559,5 +561,20 @@ pre {
     .card.maximized {
         border: 1px var(--nice-white) solid;
         scale: 300%;
+    }
+    .card.maximized.editing {
+        scale: 200%;
+    }
+    .little-card.card>h1{
+        font-size: 4vw;
+    }
+    pre {
+        padding: 0 0.3rem!important;
+        width: 8.4em!important;
+    }
+    pre>code {
+        display: inline-block;
+        width: 100%!important;
+        font-size: 7px!important;
     }
 }

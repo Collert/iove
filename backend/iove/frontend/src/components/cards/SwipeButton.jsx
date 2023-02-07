@@ -9,7 +9,7 @@ export default function SwipeButton (props) {
             subject:props.userId,
             like:props.like
         }
-        fetch('http://localhost:8000/api/decision', generatePayload(getCookie('csrftoken'), fetchBody, 'POST'))
+        fetch('/api/decision', generatePayload(getCookie('csrftoken'), fetchBody, 'POST'))
     }
 
     return(
