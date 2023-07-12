@@ -36,7 +36,7 @@ Moreover, a dating app typically implements a range of specialized features that
 
 Additionally, my dating app project incorporates advanced technologies and functionality that extend beyond what has been taught in the course. By integrating cutting-edge technologies such as WebSockets, the app can enhance user experiences. These advancements further differentiate the app from conventional social networks, which generally focus on socializing and information sharing rather than personalized relationship-building.
 
-In conclusion, while a dating app could technically be classified as a form of social network due to its user interaction, it possesses distinctive qualities and functionalities that set it apart from traditional social networking platforms. Its emphasis on facilitating romantic connections, specialized features tailored to relationship-building, and incorporation of advanced technologies demonstrate its unique purpose and differentiates it from social networks as a distinct project.
+In conclusion, while a dating app could technically be classified as a form of social network due to its user interaction, it possesses distinctive qualities and functionalities that set it apart from traditional social networking platforms. Its emphasis on facilitating romantic connections, specialized features tailored to relationship-building, and incorporation of advanced technologies demonstrate its unique purpose and differentiates it from social networks, especially from Project 4, as a distinct project.
 
 ## File structure
 #### Root
